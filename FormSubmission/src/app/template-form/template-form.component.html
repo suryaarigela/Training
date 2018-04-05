@@ -1,0 +1,48 @@
+<form #myForm="ngForm" (ngSubmit)="submitForm(myForm)">
+  <div class="form-group">
+    <label for="firstName">FirstName</label>
+    <input id=firstName
+    required
+    minlength="3"
+    ngModel
+    name="firstName"
+    #firstName="ngModel"
+    type="text"
+    (blur)="fieldChange(firstName,myForm)"  
+    class="form-control">
+    <div class="alert alert-danger" *ngIf="firstName.touched && firstName.errors">
+      <div *ngIf="firstName.errors?.required">
+          First Name is Mandatory
+       </div>
+       <div *ngIf="firstName.errors?.minlength">
+          Minimum length is 3
+       </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="lastName">LastName</label>
+      <input id=lastName
+      required
+      minlength="3"
+      [(ngModel)]="twowayname"
+      name="lastName"
+      #lastName="ngModel"
+      type="text"
+      (blur)="fieldChange(lastName)"  
+      class="form-control">
+      <div class="alert alert-danger" *ngIf="lastName.touched && lastName.errors">
+        <div *ngIf="lastName.errors?.required">
+            First Name is Mandatory
+         </div>
+         <div *ngIf="lastName.errors?.minlength">
+            Minimum length is 3
+         </div>
+      </div>
+    </div>
+  
+
+  <button class="btn btn-primary" [disabled]="!myForm.valid" >Template Form Submit</button>
+</form>
+
+<h3>Reactive Forms</h3>
