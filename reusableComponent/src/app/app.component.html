@@ -1,0 +1,12 @@
+<h3>Address List Reusable component- Address</h3>
+<div *ngFor="let address of addressList">
+<app-address 
+[name]="address.name"
+[firstLine]="address.firstLine" 
+[secondLine]="address.secondLine" 
+[postalCode]="address.postalCode"
+[telephone]="address.telephone"
+[state]="address.state"
+(emitter)="removeme(address)"
+></app-address>
+</div>
